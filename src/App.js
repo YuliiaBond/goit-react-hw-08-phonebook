@@ -3,13 +3,18 @@ import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import Container from './components/Container';
 import AppBar from './components/AppBar';
+import HomeView from './views/HomeView';
+import RegisterView from './views/RegisterView';
+import LoginView from './views/LoginView';
+import ContactsView from './views/ContactsView';
 
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authOperatios.fetchCurrentUser());
+    // dispatch(authOperatios.fetchCurrentUser());
+    dispatch();
   }, [dispatch]);
 
   return (
