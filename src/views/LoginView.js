@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { authOperations } from '../redux/auth';
+import { logIn } from '../redux/auth';
 import styles from './Styles.module.css';
 
 export default function LoginView() {
@@ -23,15 +23,14 @@ export default function LoginView() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch()
-        // dispatch(authOperations.logIn({ email, password }));
+        dispatch(logIn({ email, password }));
         setEmail('');
         setPassword('');
     };
 
     return (
         <div>
-        <h1>Страница логина</h1>
+        <h1>Authorization</h1>
 
         <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
             <label style={styles.label}>
@@ -54,7 +53,7 @@ export default function LoginView() {
                 />
             </label>
 
-            <button type="submit">Войти</button>
+            <button type="submit">Sign in</button>
         </form>
     </div>
     );

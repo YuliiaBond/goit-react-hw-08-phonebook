@@ -7,7 +7,7 @@ import Form from '../Form';
 import Filter from '../Filter';
 import Contacts from '../Contacts';
 import Loader from '../Loader';
-
+import styles from './Phonebook.module.css'
 
 export default function Phonebook() {
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export default function Phonebook() {
     }, [dispatch]);
 
     return (
-        <div>
+        <div style={styles.bar}>
             <h1>Phonebook</h1>
             <Form />
 

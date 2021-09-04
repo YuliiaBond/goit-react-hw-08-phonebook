@@ -12,7 +12,7 @@ export default function Navigation() {
                 to="/"
                 exact
                 style={styles.link}
-                activeStyle={styles.active_link}
+                activeStyle={styles.activeLink}
             >
                 Home page
             </NavLink>

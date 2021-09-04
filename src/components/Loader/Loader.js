@@ -1,16 +1,18 @@
-import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import style from './Loader.module.css';
+import React from 'react';
 
-const loader = () => (
-    <Loader
-        type="Puff"
-        color="#00BFFF"
-        height={100}
-        width={100}
-        timeout={5000}
-        className={style.Loader}
-    />
-);
+const Loader = () => {
+    return (
+    <div className="text-center">
+        <div
+            style={{
+                borderTopColor: 'transparent',
+            }}
+            className="border-solid animate-spin  rounded-full border-blue-400 border-8 h-20 w-20"
+            />
+            
+            ... Loading
+        </div>
+    );
+}
 
-export default loader;
+export default Loader;

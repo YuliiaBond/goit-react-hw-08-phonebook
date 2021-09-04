@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { authOperations } from '../redux/auth';
+import { register } from '../redux/auth';
 import styles from './Styles.module.css';   
 
 export default function RegisterView() {
@@ -27,8 +27,7 @@ export default function RegisterView() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch()
-        // dispatch(authOperations.register({ name, email, password }));
+        dispatch(register({ name, email, password }));
         setName('');
         setEmail('');
         setPassword('');
@@ -36,7 +35,7 @@ export default function RegisterView() {
 
     return (
         <div>
-            <h1>Страница регистрации</h1>
+            <h1>Registration</h1>
 
             <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
         
@@ -55,7 +54,7 @@ export default function RegisterView() {
                     <input type="password" name="password" value={password} onChange={handleChange} />
                 </label>
 
-                <button type="submit">Registration</button>
+                <button type="submit">Sign up</button>
             </form>
         </div>
     );
