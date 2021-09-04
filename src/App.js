@@ -1,42 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Container from './components/Container';
 import AppBar from './components/AppBar';
-import HomeView from './views/HomeView';
-import RegisterView from './views/RegisterView';
-import LoginView from './views/LoginView';
-import ContactsView from './views/ContactsView';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import { getCurrentUser } from './redux/auth';
+
+const HomeView = lazy(() => import('./views/HomeView'));
+const RegisterView = lazy(() => import('./views/RegisterView'));
+const LoginView = lazy(() => import('./views/LoginView'));
+const ContactsView = lazy(() => import('./views/ContactsView'));
 
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(authOperatios.fetchCurrentUser());
-    dispatch();
-  }, [dispatch]);
+    dispatch(getCurrentUser());
+    }, [dispatch]);
 
   return (
     <Container>
       <AppBar />
 
-        <Switch>
-          <Route exact path="/" component={HomeView} />
-          <Route path="/register" component={RegisterView} />
-          <Route path="/login" component={LoginView} />
-          <Route path="/contacts" component={ContactsView} />
-        </Switch>
+        <Suspense fallback={<h2>Loading...</h2>}>
+          
+          <Switch>
+            <PublicRoute exact path="/" component={HomeView} />
+            <PublicRoute path="/register" component={RegisterView} />
+            <PublicRoute path="/login" component={LoginView} />
+            <PrivateRoute path="/contacts" component={ContactsView} />
+          </Switch>
 
-      {/* <h1>Phonebook</h1>
-
-      <Form />
-
-      <h2>Contacts</h2>
-
-      <Filter />
-
-      <Contacts /> */}
+        </Suspense>
         
     </Container>
   )

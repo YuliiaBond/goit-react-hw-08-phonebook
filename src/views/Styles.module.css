@@ -1,5 +1,6 @@
 /* HomeView */
 .container {
+  background-image: url(../images/4.jpg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,4 +19,11 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+}
+
+/* ContactsView */
+.bar {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
 }

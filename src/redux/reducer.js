@@ -1,5 +1,4 @@
-import { combineReducers } from 'redux';
-import { createReducer } from "@reduxjs/toolkit";
+import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import  { addContactError, addContactRequest, addContactSuccess, deleteContactError, deleteContactRequest, deleteContactSuccess, fetchContactError, fetchContactRequest, fetchContactSuccess, filterContact } from './actions';
 
 const item = createReducer([], {
@@ -24,7 +23,15 @@ const loading = createReducer(false, {
     [deleteContactError]: () => false,
 });
 
-const error = createReducer(null, {});
+const error = createReducer(null, {
+    [fetchContactRequest]: () => null,
+    [fetchContactError]: (_, { payload }) => payload.response.data,
+    [addContactRequest]: () => null,
+    [addContactError]: (_, { payload }) => payload.response.data,
+    [deleteContactRequest]: () => null,
+    [deleteContactError]: (_, { payload }) => payload.response.data,
+
+});
 
 export default combineReducers({
     item,
