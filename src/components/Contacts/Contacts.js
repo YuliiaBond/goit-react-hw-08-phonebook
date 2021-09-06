@@ -1,14 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/operation';
-import { getVisibleContacts } from '../../redux/selectors';
+import {contactsOperations, contactsSelectors } from '../../redux/contacts';
 import Contact from '../Contact/Contact';
 import style from './Contacts.module.css'
 
 const Contacts = () => {
     const dispatch = useDispatch();
-    const contacts = useSelector(getVisibleContacts);
-    const onDeleteContact = id => dispatch(deleteContact(id));
+    const contacts = useSelector(contactsSelectors.getVisibleContacts);
+    const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
 
     return (
         <ul className={style.list}>

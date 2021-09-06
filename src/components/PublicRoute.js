@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import { getIsAuthenticated  } from '../redux/auth';
+import { authSelectors } from '../redux/auth';
 
 /**
  * - Если маршрут ограниченный, и юзер залогинен, рендерит редирект на redirectTo
@@ -14,7 +14,7 @@ export default function PublicRoute({
     redirectTo = '/',
     ...routeProps
 }) {
-    const isLoggedIn = useSelector(getIsAuthenticated);
+    const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
     const shouldRedirect = isLoggedIn && restricted;
         return (
     

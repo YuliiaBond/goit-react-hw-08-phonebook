@@ -1,8 +1,18 @@
 import axios from 'axios';
-import { addContactError, addContactRequest, addContactSuccess, deleteContactError, deleteContactRequest, deleteContactSuccess, fetchContactError, fetchContactRequest, fetchContactSuccess } from './actions';
+import {
+    addContactError,
+    addContactRequest,
+    addContactSuccess,
+    deleteContactError,
+    deleteContactRequest,
+    deleteContactSuccess,
+    fetchContactError,
+    fetchContactRequest,
+    fetchContactSuccess
+} from './actions';
 
 
-export const fetchContacts = () => async dispatch => {
+const fetchContacts = () => async dispatch => {
     dispatch(fetchContactRequest());
 
     try {
@@ -19,7 +29,7 @@ export const fetchContacts = () => async dispatch => {
     //     .catch(error => dispatch(fetchContactError(error)));
 };
 
-export const addContact = ({ name, number }) => async dispatch => {
+const addContact = ({ name, number }) => async dispatch => {
     const contact = {
         name,
         number,
@@ -41,7 +51,7 @@ export const addContact = ({ name, number }) => async dispatch => {
     //     .catch(error => dispatch(addContactError(error)));
 };
 
-export const deleteContact = contactId => async dispatch => {
+const deleteContact = contactId => async dispatch => {
     dispatch(deleteContactRequest());
 
     try {
@@ -56,3 +66,11 @@ export const deleteContact = contactId => async dispatch => {
     //     .then(() => dispatch(deleteContactSuccess(contactId)))
     //     .catch(error => dispatch(deleteContactError(error)));
 };
+
+const contactsOperations = {
+    fetchContacts,
+    addContact,
+    deleteContact,
+};
+
+export default contactsOperations;

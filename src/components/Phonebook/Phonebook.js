@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../../redux/operation';
-import { getLoading } from '../../redux/selectors';
+import contactsOperations from '../../redux/contacts/operation';
+import contactsSelector from '../../redux/contacts/selectors';
 
 import Form from '../Form';
 import Filter from '../Filter';
@@ -11,10 +11,10 @@ import styles from './Phonebook.module.css'
 
 export default function Phonebook() {
     const dispatch = useDispatch();
-    const isLoading = useSelector(getLoading);
+    const isLoading = useSelector(contactsSelector.getLoading);
 
     useEffect(() => {
-        dispatch(fetchContacts());
+        dispatch(contactsOperations.fetchContacts());
     }, [dispatch]);
 
     return (

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from '../../redux/selectors';
-import { addContact } from '../../redux/operation';
+import contactsOperations from '../../redux/contacts/operation';
+import contactsSelectors from '../../redux/contacts/selectors';
 import style from './Form.module.css'
 
 export default function Form() {
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts);
+    const contacts = useSelector(contactsSelectors.getContacts);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     
@@ -40,7 +40,7 @@ export default function Form() {
             return alert(`${name} is already in contacs.`)
         }
 
-        dispatch(addContact({ name, number }));
+        dispatch(contactsOperations.addContact({ name, number }));
         setName('');
         setNumber('');
     };

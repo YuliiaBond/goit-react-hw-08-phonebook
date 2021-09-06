@@ -1,5 +1,17 @@
-import { combineReducers, createReducer } from "@reduxjs/toolkit";
-import  { addContactError, addContactRequest, addContactSuccess, deleteContactError, deleteContactRequest, deleteContactSuccess, fetchContactError, fetchContactRequest, fetchContactSuccess, filterContact } from './actions';
+import { combineReducers } from 'redux';
+import { createReducer } from '@reduxjs/toolkit';
+import {
+    addContactError,
+    addContactRequest,
+    addContactSuccess,
+    deleteContactError,
+    deleteContactRequest,
+    deleteContactSuccess,
+    fetchContactError,
+    fetchContactRequest,
+    fetchContactSuccess,
+    filterContact,
+} from './actions';
 
 const item = createReducer([], {
     [fetchContactSuccess]: (_, { payload }) => payload,
