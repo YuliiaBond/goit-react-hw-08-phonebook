@@ -32,8 +32,8 @@ export default function LoginView() {
         <div>
         <h1>Authorization</h1>
 
-        <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-            <label style={styles.label}>
+        <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
+            <label className={styles.label}>
                 Email
                 <input
                     type="email"
@@ -43,7 +43,7 @@ export default function LoginView() {
                 />
             </label>
 
-            <label style={styles.label}>
+            <label className={styles.label}>
                 Password
                 <input
                     type="password"

@@ -18,7 +18,7 @@ export default function Phonebook() {
     }, [dispatch]);
 
     return (
-        <div style={styles.bar}>
+        <div className={styles.bar}>
             <h1>Phonebook</h1>
             <Form />
 
